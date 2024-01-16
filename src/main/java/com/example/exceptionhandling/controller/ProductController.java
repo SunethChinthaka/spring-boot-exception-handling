@@ -16,7 +16,7 @@ public class ProductController {
     private ProductService service;
 
     @PostMapping
-    public List<Product> saveProduct(@RequestBody Product product){
+    public List<Product> saveProduct(@RequestBody Product product) {
         return service.saveProduct(product);
     }
 
@@ -36,8 +36,8 @@ public class ProductController {
     }
 
 
-    @GetMapping(produces = {"application/json","application/xml"})
-   // @Hidden
+    @GetMapping(produces = {"application/json", "application/xml"})
+    // @Hidden
     public List<Product> products(@RequestParam(value = "productType", required = false) String productType) {
         return productType != null
                 ? service.getProductByType(productType)
@@ -45,11 +45,10 @@ public class ProductController {
     }
 
 
-
-//    @GetMapping("/stores/{flag}/{storeId}")
-//    public String fetchStoreLocation(@PathVariable boolean flag,@PathVariable String storeId){
-//        return service.fetchLocation(flag, storeId);
-//    }
+    @GetMapping("/stores/{flag}/{storeId}")
+    public String fetchStoreLocation(@PathVariable boolean flag, @PathVariable String storeId) {
+        return service.fetchLocation(flag, storeId);
+    }
 
 
 }

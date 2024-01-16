@@ -3,6 +3,7 @@ package com.example.exceptionhandling.handler;
 import com.example.exceptionhandling.dto.ErrorDTO;
 import com.example.exceptionhandling.exception.DuplicateProductException;
 import com.example.exceptionhandling.exception.ProductNotFoundException;
+import com.example.exceptionhandling.exception.ProductServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,6 +23,11 @@ public class ProductExceptionHandler {
 
     @ExceptionHandler(DuplicateProductException.class)
     public ProblemDetail handleDuplicateProductException(DuplicateProductException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
+    }
+
+    @ExceptionHandler(ProductServiceException.class)
+    public ProblemDetail handleProductServiceException(ProductServiceException ex) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
     }
 }

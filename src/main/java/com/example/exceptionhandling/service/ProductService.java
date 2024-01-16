@@ -2,7 +2,9 @@ package com.example.exceptionhandling.service;
 
 import com.example.exceptionhandling.exception.DuplicateProductException;
 import com.example.exceptionhandling.exception.ProductNotFoundException;
+import com.example.exceptionhandling.exception.ProductServiceException;
 import com.example.exceptionhandling.model.Product;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -69,28 +71,28 @@ public class ProductService {
     //After throwing advice -> if any exception occurs
     //around advice -> Before + After returning
 
-//    public String fetchLocation(boolean flag, String storeId) {
-//        //Transaction
-//        //logging
-//        //validation
-//        //auditing
-//        //notification
-//        try {
-//            if (flag) {
-//                //fetch from application DB
-//                //logic
-//                throw new DataRetrievalFailureException("Store not available in system with storeId " + storeId);
-//            } else {
-//                //do rest api call to fetch store info by ID
-//                //logic
-//                throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR,
-//                        "Rest client error occurred while fetching store information");
-//            }
-//        } catch (Exception exception) {
-//            throw new ProductServiceException(exception.getMessage());
-//        }
-//
-//    }
+    public String fetchLocation(boolean flag, String storeId) {
+        //Transaction
+        //logging
+        //validation
+        //auditing
+        //notification
+        try {
+            if (flag) {
+                //fetch from application DB
+                //logic
+                throw new DataRetrievalFailureException("Store not available in system with storeId " + storeId);
+            } else {
+                //do rest api call to fetch store info by ID
+                //logic
+                throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR,
+                        "Rest client error occurred while fetching store information");
+            }
+        } catch (Exception exception) {
+            throw new ProductServiceException(exception.getMessage());
+        }
+
+    }
 
 
 }
