@@ -2,6 +2,7 @@ package com.example.exceptionhandling.controller;
 
 import com.example.exceptionhandling.model.Product;
 import com.example.exceptionhandling.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class ProductController {
     private ProductService service;
 
     @PostMapping
-    public List<Product> saveProduct(@RequestBody Product product) {
+    public List<Product> saveProduct(@RequestBody @Valid Product product) {
         return service.saveProduct(product);
     }
 
