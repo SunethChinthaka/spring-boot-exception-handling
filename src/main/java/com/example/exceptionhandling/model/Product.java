@@ -1,5 +1,6 @@
 package com.example.exceptionhandling.model;
 
+import com.example.exceptionhandling.validation.ValidateProductType;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +24,7 @@ public class Product {
 //    @Pattern(regexp = "[A-Za-z0-9]+")
     private String model;
     @NotBlank(message = "productType shouldn't be null or empty")
-//     @ValidateProductType
+    @ValidateProductType
     private String productType;
 
     /*@Email
