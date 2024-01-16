@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,4 +25,15 @@ public class Product {
     @NotBlank(message = "productType shouldn't be null or empty")
 //     @ValidateProductType
     private String productType;
+
+    /*@Email
+    private String emailId;
+
+    @AssertFalse
+    @AssertTrue
+    private boolean isActive;
+
+    @Future
+    @Past
+    private Date birthDate;*/
 }
